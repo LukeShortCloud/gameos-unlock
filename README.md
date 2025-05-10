@@ -2,12 +2,19 @@
 
 Table of Contents:
 - [Introduction](#introduction)
+- [Requirements](#requirements)
 - [Getting Started](#getting-started)
 - [License](#license)
 
 ## Introduction
 
 Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!
+
+## Requirements
+
+- 1x PC with Playtron GameOS Beta 1 (0.21.0.21) or newer installed
+- 1x PC with Linux, macOS, or Windows installed to manage GameOS remotely
+    - [Windows Subsystem for Linux (WSL) 2](https://learn.microsoft.com/en-us/windows/wsl/install) is recommended for Windows users
 
 ## Getting Started
 
