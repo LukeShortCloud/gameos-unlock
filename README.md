@@ -40,6 +40,16 @@ Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/ga
     ```shell
     ssh playtron@$GAMEOS_IP_ADDRESS password
     ```
+- Enable passwordless `sudo`.
+    ```shell
+    ssh playtron@$GAMEOS_IP_ADDRESS
+    ```
+    ```shell
+    sudo touch /etc/sudoers.d/playtron
+    sudo chmod 0440 /etc/sudoers.d/playtron
+    echo "playtron ALL=(root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/playtron
+    exit
+    ```
 
 ## Scripts
 
