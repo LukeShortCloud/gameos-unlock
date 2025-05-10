@@ -2,11 +2,35 @@
 
 Table of Contents:
 - [Introduction](#introduction)
+- [Getting Started](#getting-started)
 - [License](#license)
 
 ## Introduction
 
 Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!
+
+## Getting Started
+
+- Enable SSH access on GameOS.
+    - Settings > Advanced > Remote Access: On
+- Find the IP address.
+    - Settings > Internet > (select your Wi-Fi network) > (scroll down and look for "IP Address")
+- Set an environment variable for the IP address. Be sure to use your actual IP address from the previous step.
+    ```shell
+    export GAMEOS_IP_ADDRESS=192.168.1.123
+    ```
+- Generate a SSH key if you do not have one already.
+    ```shell
+    ssh-keygen
+    ```
+- Copy the public SSH key to the device for easier access. The default password for the user `playtron` is `playtron`.
+    ```shell
+    ssh-copy-id playtron@$GAMEOS_IP_ADDRESS
+    ```
+- It is strongly recommended to also change the default password.
+    ```shell
+    ssh playtron@$GAMEOS_IP_ADDRESS password
+    ```
 
 ## License
 
