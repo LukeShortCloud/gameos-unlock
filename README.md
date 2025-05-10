@@ -4,6 +4,8 @@ Table of Contents:
 - [Introduction](#introduction)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
+- [Scripts](#scripts)
+    - [Enable Sideloading Support](#enable-sideloading-support)
 - [License](#license)
 
 ## Introduction
@@ -38,6 +40,18 @@ Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/ga
     ```shell
     ssh playtron@$GAMEOS_IP_ADDRESS password
     ```
+
+## Scripts
+
+### Enable Sideloading Support
+
+The [local plugin](https://github.com/playtron-os/plugin-local) is installed but not enabled by default. Copy and run these commands to enable it. This will take some time for the Playtron service to restart.
+
+```shell
+scp plugin-local/plugin-local-enable.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/plugin-local-enable.sh
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/plugin-local-enable.sh
+```
 
 ## License
 
