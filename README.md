@@ -6,6 +6,7 @@ Table of Contents:
 - [Getting Started](#getting-started)
 - [Scripts](#scripts)
     - [Enable Sideloading Support](#enable-sideloading-support)
+        - [Install Minecraft](#install-minecraft)
 - [License](#license)
 
 ## Introduction
@@ -61,6 +62,18 @@ The [local plugin](https://github.com/playtron-os/plugin-local) is installed but
 scp plugin-local/plugin-local-enable.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
 ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/plugin-local-enable.sh
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/plugin-local-enable.sh
+```
+
+Some applications and games have no way to exit. Use the "GUIDE" button to go back to the Home screen. Then use the "Y" button to force close it.
+
+#### Install Minecraft
+
+Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
+
+```shell
+scp plugin-local/install-minecraft.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-minecraft.sh
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-minecraft.sh
 ```
 
 ## License
