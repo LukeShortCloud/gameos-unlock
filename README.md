@@ -7,6 +7,7 @@ Table of Contents:
 - [Scripts](#scripts)
     - [Enable Sideloading Support](#enable-sideloading-support)
         - [Install Minecraft](#install-minecraft)
+        - [Install a Desktop Environment](#install-a-desktop-environment)
 - [License](#license)
 
 ## Introduction
@@ -75,6 +76,31 @@ scp plugin-local/install-minecraft.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron
 ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-minecraft.sh
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-minecraft.sh
 ```
+
+#### Install a Desktop Environment
+
+By default, Playtron GameOS only provides a basic Weston desktop environment. An example is provided to install and use KDE Plasma. This requires building a local container image. Additional customizations can be added first.
+
+```shell
+cp bootc/desktop/Containerfile.example bootc/desktop/Containerfile
+```
+```shell
+scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --tag desktop:1 .
+ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/desktop:1
+scp bootc/desktop/install-desktop-mode.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-desktop-mode.sh
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-desktop-mode.sh
+```
+
+A reboot is required to load the changes.
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS sync
+ssh playtron@$GAMEOS_IP_ADDRESS sudo reboot
+```
+
+A new "Desktop Mode" application will appear to switch into the KDE Plasma desktop environment. Once in Game Mode, there is a "Game Mode" desktop shortcut to switch back.
 
 ## License
 

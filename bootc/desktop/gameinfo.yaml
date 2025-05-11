@@ -1,0 +1,4 @@
+name: Desktop Mode
+executable: ./switch-to-desktop-mode.sh
+image: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/a5fb97d4-1124-4f7f-a25f-4dae176c94f7/d2ztkkw-8407dfe9-af6a-40e9-8922-1c306963e6a0.png
+os: linux

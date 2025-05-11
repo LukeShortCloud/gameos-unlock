@@ -1,0 +1,31 @@
+#!/bin/bash
+
+mkdir -p ~/Desktop/ ~/.local/bin/ ~/.local/share/playtron/apps/local/desktop/
+sudo mkdir /etc/sddm.conf.d/
+
+echo '#!/bin/bash
+echo -e "[Autologin]\nSession=plasma" | sudo tee /etc/sddm.conf.d/60-playtron-session-override.conf
+sudo systemctl restart sddm' > ~/.local/share/playtron/apps/local/desktop/switch-to-desktop-mode.sh
+chmod +x ~/.local/share/playtron/apps/local/desktop/switch-to-desktop-mode.sh
+
+echo '#!/bin/bash
+
+sudo rm -f /etc/sddm.conf.d/60-playtron-session-override.conf
+sudo systemctl restart sddm' > ~/.local/share/playtron/apps/local/desktop/switch-to-game-mode.sh
+chmod +x ~/.local/share/playtron/apps/local/desktop/switch-to-game-mode.sh
+
+echo 'name: Desktop Mode
+executable: ./switch-to-desktop-mode.sh
+image: https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg
+os: linux' > ~/.local/share/playtron/apps/local/desktop/gameinfo.yaml
+
+echo '[Desktop Entry]
+Exec=/bin/bash /home/playtron/.local/share/playtron/apps/local/desktop/switch-to-game-mode.sh
+Name=Game Mode
+Comment=Switch from Desktop Mode back to Game Mode
+Encoding=UTF-8
+Icon=/usr/share/plasma/desktoptheme/default/icons/mobile.svgz
+Terminal=false
+Type=Application
+Categories=Application' > ~/Desktop/switch-to-game-mode.desktop
+chmod +x ~/Desktop/switch-to-game-mode.desktop
