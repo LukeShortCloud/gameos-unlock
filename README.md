@@ -103,6 +103,8 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 
 #### Install Web Browsers
 
+On handhelds, after installation, use the Quick Access Menu (QAM) button to access the virtual keyboard.
+
 Install Google Chrome.
 
 ```shell
