@@ -6,6 +6,7 @@ Table of Contents:
 - [Getting Started](#getting-started)
 - [Scripts](#scripts)
     - [Enable Sideloading Support](#enable-sideloading-support)
+        - [Install Any Flatpak](#install-any-flatpak)
         - [Install Minecraft](#install-minecraft)
         - [Install a Desktop Environment](#install-a-desktop-environment)
 - [License](#license)
@@ -67,14 +68,49 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/plugin-local-enable.sh
 
 Some applications and games have no way to exit. Use the "GUIDE" button to go back to the Home screen. Then use the "Y" button to force close it.
 
+#### Install Any Flatpak
+
+Any Flatpak can be installed by specifying a human-friendly name and the Flatpak package name. Optionally provide a URL to a 1080p image. Search on [Flathub](https://flathub.org/) to see what applications and games are available.
+
+Remove the `fedora` repository and only use `flathub` for simplicity of having one repository, more packages, and more up-to-date packages.
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS sudo flatpak remote-delete fedora
+ssh playtron@$GAMEOS_IP_ADDRESS sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
+
+Define the required for the Flatpak values first.
+
+```shell
+export FLATPAK_NAME="Minecraft"
+export FLATPAK_PACKAGE="org.prismlauncher.PrismLauncher"
+```
+
+Optionally, define the image URL.
+
+```shell
+export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg"
+```
+
+Then run these commands to install it.
+
+```shell
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+```
+
 #### Install Minecraft
 
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
 
 ```shell
-scp plugin-local/install-minecraft.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-minecraft.sh
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-minecraft.sh
+export FLATPAK_NAME="Minecraft"
+export FLATPAK_PACKAGE="org.prismlauncher.PrismLauncher"
+export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg"
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ```
 
 #### Install a Desktop Environment
