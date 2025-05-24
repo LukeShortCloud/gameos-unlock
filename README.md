@@ -7,6 +7,7 @@ Table of Contents:
 - [Scripts](#scripts)
     - [Enable Sideloading Support](#enable-sideloading-support)
         - [Install Any Flatpak](#install-any-flatpak)
+        - [Install Web Browsers](#install-web-browsers)
         - [Install Minecraft](#install-minecraft)
         - [Install a Desktop Environment](#install-a-desktop-environment)
 - [License](#license)
@@ -95,6 +96,30 @@ export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0c
 Then run these commands to install it.
 
 ```shell
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+```
+
+#### Install Web Browsers
+
+Install Google Chrome.
+
+```shell
+export FLATPAK_NAME="Chrome"
+export FLATPAK_PACKAGE="com.google.Chrome"
+export FLATPAK_IMAGE="https://wallpapersok.com/images/high/seamless-google-chrome-art-ascghdz14kzmk87u.webp"
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+```
+
+Install Mozilla Firefox.
+
+```shell
+export FLATPAK_NAME="Firefox"
+export FLATPAK_PACKAGE="org.mozilla.firefox"
+export FLATPAK_IMAGE="https://img.goodfon.com/original/1920x1080/0/83/mozilla-firefox-brauzer-5087.jpg"
 scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
 ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
