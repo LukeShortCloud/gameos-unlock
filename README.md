@@ -8,6 +8,7 @@ Table of Contents:
     - [Enable Sideloading Support](#enable-sideloading-support)
         - [Install Any Flatpak](#install-any-flatpak)
         - [Install Web Browsers](#install-web-browsers)
+        - [Install Game Streaming Services](#install-game-streaming-services)
         - [Install Minecraft](#install-minecraft)
         - [Install a Desktop Environment](#install-a-desktop-environment)
 - [License](#license)
@@ -115,6 +116,19 @@ Install Mozilla Firefox.
 export FLATPAK_NAME="Firefox"
 export FLATPAK_PACKAGE="org.mozilla.firefox"
 export FLATPAK_IMAGE="https://img.goodfon.com/original/1920x1080/0/83/mozilla-firefox-brauzer-5087.jpg"
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+```
+
+#### Install Game Streaming Services
+
+Install chiaki4deck for PlayStation Remote Play.
+
+```shell
+export FLATPAK_NAME="chiaki4deck"
+export FLATPAK_PACKAGE="io.github.streetpea.Chiaki4deck"
+export FLATPAK_IMAGE="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/01/remote-play.jpeg"
 scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
 ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
