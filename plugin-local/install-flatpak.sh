@@ -7,6 +7,9 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 
 sudo flatpak install -y "${2}"
 
+# Enable controller support.
+sudo flatpak override --filesystem=/run/udev:ro "${2}"
+
 mkdir ~/.local/share/playtron/apps/local/"${1}"/
 
 echo '#!/bin/bash' >  ~/.local/share/playtron/apps/local/"${1}"/launcher.sh
