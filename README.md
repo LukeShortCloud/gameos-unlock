@@ -146,6 +146,18 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/play.geforcenow.com/g" /home/playtron/.local/share/playtron/apps/local/"${FLATPAK_NAME}"/launcher.sh
 ```
 
+Install Xbox Cloud Gaming.
+
+```shell
+export FLATPAK_NAME="Xbox_Cloud_Gaming"
+export FLATPAK_PACKAGE="com.google.Chrome"
+export FLATPAK_IMAGE="https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg"
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" /home/playtron/.local/share/playtron/apps/local/"${FLATPAK_NAME}"/launcher.sh
+```
+
 #### Install Minecraft
 
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
