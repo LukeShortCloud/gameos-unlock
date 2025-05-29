@@ -134,6 +134,18 @@ ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${F
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ```
 
+Install NVIDIA GeForce NOW.
+
+```shell
+export FLATPAK_NAME="NVIDIA_GeForce_NOW"
+export FLATPAK_PACKAGE="com.google.Chrome"
+export FLATPAK_IMAGE="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/08/GeForce-Now-Comment.jpg"
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/play.geforcenow.com/g" /home/playtron/.local/share/playtron/apps/local/"${FLATPAK_NAME}"/launcher.sh
+```
+
 #### Install Minecraft
 
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
