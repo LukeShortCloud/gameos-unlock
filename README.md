@@ -73,13 +73,6 @@ Some applications and games have no way to exit. Use the "GUIDE" button to go ba
 
 Any Flatpak can be installed by specifying a human-friendly name and the Flatpak package name. Optionally provide a URL to a 1080p image. Search on [Flathub](https://flathub.org/) to see what applications and games are available.
 
-Remove the `fedora` repository and only use `flathub` for simplicity of having one repository, more packages, and more up-to-date packages.
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS sudo flatpak remote-delete fedora
-ssh playtron@$GAMEOS_IP_ADDRESS sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
-
 Define the required for the Flatpak values first.
 
 ```shell

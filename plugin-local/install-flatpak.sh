@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Remove the `fedora` repository and only use `flathub` for
+# simplicity of having one repository, more packages, and more up-to-date packages.
+sudo flatpak remote-delete fedora
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 sudo flatpak install -y "${2}"
 
 mkdir ~/.local/share/playtron/apps/local/"${1}"/
