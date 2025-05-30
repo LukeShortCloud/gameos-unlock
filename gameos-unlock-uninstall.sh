@@ -16,4 +16,8 @@ sudo flatpak remote-add --if-not-exists fedora oci+https://registry.fedoraprojec
 sudo rm -f /etc/sddm.conf.d/60-playtron-session-override.conf
 
 # Switch to the upstream image in case local modifications were used.
-sudo bootc switch --apply ghcr.io/playtron-os/playtron-os:latest
+sudo bootc switch ghcr.io/playtron-os/playtron-os:latest
+
+# Delete the uninstall script before rebooting.
+rm -f /home/playtron/gameos-unlock-uninstall.sh
+sudo reboot
