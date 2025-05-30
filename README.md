@@ -20,10 +20,12 @@ Table of Contents:
 
 This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section and then [enable sideloading support](#enable-sideloading-support).
 
-For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address.
+For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address, navigate back to the `gameos-unlock` directory, and download the latest updates.
 
 ```shell
 export GAMEOS_IP_ADDRESS=192.168.1.123
+cd gameos-unlock
+git pull --rebase origin main
 ```
 
 **USE AT YOUR OWN RISK!** If you run into any major issues, it is possible to [uninstall](#uninstall) GameOS Unlock modifications.
@@ -65,6 +67,11 @@ export GAMEOS_IP_ADDRESS=192.168.1.123
     sudo chmod 0440 /etc/sudoers.d/playtron
     echo "playtron ALL=(root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/playtron
     exit
+    ```
+- Clone the GameOS Unlock repository to start using the provided scripts.
+    ```shell
+    git clone https://github.com/LukeShortCloud/gameos-unlock.git
+    cd gameos-unlock
     ```
 
 ## Scripts
