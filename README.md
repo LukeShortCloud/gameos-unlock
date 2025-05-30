@@ -11,11 +11,12 @@ Table of Contents:
         - [Install Game Streaming Services](#install-game-streaming-services)
         - [Install Minecraft](#install-minecraft)
         - [Install a Desktop Environment](#install-a-desktop-environment)
+    - [Uninstall](#uninstall)
 - [License](#license)
 
 ## Introduction
 
-Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!
+**Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!**
 
 This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section and then [enable sideloading support](#enable-sideloading-support).
 
@@ -24,6 +25,8 @@ For running commands again, always set the `GAMEOS_IP_ADDRESS` environment varia
 ```shell
 export GAMEOS_IP_ADDRESS=192.168.1.123
 ```
+
+**USE AT YOUR OWN RISK!** If you run into any major issues, it is possible to [uninstall](#uninstall) GameOS Unlock modifications.
 
 ## Requirements
 
@@ -217,6 +220,15 @@ ssh playtron@$GAMEOS_IP_ADDRESS sudo reboot
 ```
 
 A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
+
+### Uninstall
+
+Remove all modifications made by GameOS Unlock and go back to a stock Playtron GameOS experience.
+
+```shell
+scp gameos-unlock-uninstall.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/gameos-unlock-uninstall.sh
+```
 
 ## License
 
