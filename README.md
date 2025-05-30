@@ -54,7 +54,7 @@ export GAMEOS_IP_ADDRESS=192.168.1.123
     ```
 - It is strongly recommended to also change the default password.
     ```shell
-    ssh playtron@$GAMEOS_IP_ADDRESS password
+    ssh playtron@$GAMEOS_IP_ADDRESS passwd
     ```
 - Enable passwordless `sudo`.
     ```shell
