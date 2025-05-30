@@ -17,6 +17,14 @@ Table of Contents:
 
 Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!
 
+This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section and then [enable sideloading support](#enable-sideloading-support).
+
+For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address.
+
+```shell
+export GAMEOS_IP_ADDRESS=192.168.1.123
+```
+
 ## Requirements
 
 - 1x PC with Playtron GameOS Beta 1 (0.21.0.21) or newer installed
