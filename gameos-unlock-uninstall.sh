@@ -20,4 +20,7 @@ sudo bootc switch ghcr.io/playtron-os/playtron-os:latest
 
 # Delete the uninstall script before rebooting.
 rm -f /home/playtron/gameos-unlock-uninstall.sh
-sudo reboot
+
+# Use a single command to delete the sudoers file and reboot.
+# Otherwise, the reboot may not work.
+sudo sh -c 'rm -f /etc/sudoers.d/playtron; reboot'
