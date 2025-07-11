@@ -6,6 +6,7 @@ sudo flatpak uninstall -y --noninteractive \
   io.github.streetpea.Chiaki4deck \
   com.google.Chrome \
   org.mozilla.firefox \
+  net.lutris.Lutris \
   org.prismlauncher.PrismLauncher
 # Remove unused dependencies.
 sudo flatpak uninstall --unused -y --noninteractive

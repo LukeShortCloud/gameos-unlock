@@ -10,6 +10,7 @@ Table of Contents:
         - [Install Web Browsers](#install-web-browsers)
         - [Install Game Streaming Services](#install-game-streaming-services)
         - [Install Minecraft](#install-minecraft)
+        - [Install Alternative Game Launchers](#install-alternative-game-launchers)
         - [Install a Desktop Environment](#install-a-desktop-environment)
     - [Uninstall](#uninstall)
 - [License](#license)
@@ -184,6 +185,21 @@ Install and configure Prism Launcher via Flatpak to be able to play vanilla or m
 export FLATPAK_NAME="Minecraft"
 export FLATPAK_PACKAGE="org.prismlauncher.PrismLauncher"
 export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg"
+scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+```
+
+#### Install Alternative Game Launchers
+
+Instead of having Playtron GameOS manage all games, an alternative game launcher can be used.
+
+Install [Lutris](https://lutris.net/).
+
+```shell
+export FLATPAK_NAME="Lutris"
+export FLATPAK_PACKAGE="net.lutris.Lutris"
+export FLATPAK_IMAGE="https://cdn2.steamgriddb.com/logo_thumb/2f51fec74d2549dad27f0dc57c5c8ddc.png"
 scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
 ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
