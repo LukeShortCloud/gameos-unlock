@@ -65,8 +65,8 @@ git pull --rebase origin main
     ```
     ```shell
     sudo touch /etc/sudoers.d/playtron
-    sudo chmod 0440 /etc/sudoers.d/playtron
     echo "playtron ALL=(root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/playtron
+    sudo chmod 0440 /etc/sudoers.d/playtron
     exit
     ```
 - Clone the GameOS Unlock repository to start using the provided scripts.
