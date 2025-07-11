@@ -33,7 +33,7 @@ git pull --rebase origin main
 
 ## Requirements
 
-- 1x PC with Playtron GameOS Beta 1 (0.21.0.21) or newer installed
+- 1x PC with Playtron GameOS Beta 1 (0.21.0.21) through Beta 2.1 (0.21.2.4) only
 - 1x PC with Linux, macOS, or Windows installed to manage GameOS remotely
     - [Windows Subsystem for Linux (WSL) 2](https://learn.microsoft.com/en-us/windows/wsl/install) is recommended for Windows users
 
@@ -79,7 +79,7 @@ git pull --rebase origin main
 
 ### Enable Sideloading Support
 
-The [local plugin](https://github.com/playtron-os/plugin-local) is installed but not enabled by default. Copy and run these commands to enable it. This will take some time for the Playtron service to restart.
+The [local plugin](https://github.com/playtron-os/plugin-local) is installed but not enabled by default on GameOS Beta 1 (0.21.0.21). Copy and run these commands to enable it. This will take some time for the Playtron service to restart.
 
 ```shell
 scp plugin-local/plugin-local-enable.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
