@@ -20,12 +20,10 @@ Table of Contents:
 
 This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section.
 
-For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address, navigate back to the `gameos-unlock` directory, and download the latest updates.
+For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address.
 
 ```shell
 export GAMEOS_IP_ADDRESS=192.168.1.123
-cd gameos-unlock
-git pull --rebase origin main
 ```
 
 **USE AT YOUR OWN RISK!** If you run into any major issues, it is possible to [uninstall](#uninstall) GameOS Unlock modifications.
@@ -95,12 +93,10 @@ Optionally, define the image URL.
 export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg"
 ```
 
-Then run these commands to install it.
+Then run this command to install it.
 
 ```shell
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}""
 ```
 
 ### Install Web Browsers
@@ -110,23 +106,13 @@ On handhelds, after installation, use the Quick Access Menu (QAM) button to acce
 Install Google Chrome.
 
 ```shell
-export FLATPAK_NAME="Chrome"
-export FLATPAK_PACKAGE="com.google.Chrome"
-export FLATPAK_IMAGE="https://wallpapersok.com/images/high/seamless-google-chrome-art-ascghdz14kzmk87u.webp"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Chrome" "com.google.Chrome" "https://wallpapersok.com/images/high/seamless-google-chrome-art-ascghdz14kzmk87u.webp""
 ```
 
 Install Mozilla Firefox.
 
 ```shell
-export FLATPAK_NAME="Firefox"
-export FLATPAK_PACKAGE="org.mozilla.firefox"
-export FLATPAK_IMAGE="https://img.goodfon.com/original/1920x1080/0/83/mozilla-firefox-brauzer-5087.jpg"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Firefox" "org.mozilla.firefox" "https://img.goodfon.com/original/1920x1080/0/83/mozilla-firefox-brauzer-5087.jpg""
 ```
 
 ### Install Game Streaming Services
@@ -134,36 +120,21 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 Install chiaki4deck for PlayStation Remote Play.
 
 ```shell
-export FLATPAK_NAME="chiaki4deck"
-export FLATPAK_PACKAGE="io.github.streetpea.Chiaki4deck"
-export FLATPAK_IMAGE="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/01/remote-play.jpeg"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "chiaki4deck" "io.github.streetpea.Chiaki4deck" "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/01/remote-play.jpeg""
 ```
 
 Install NVIDIA GeForce NOW.
 
 ```shell
-export FLATPAK_NAME="NVIDIA_GeForce_NOW"
-export FLATPAK_PACKAGE="com.google.Chrome"
-export FLATPAK_IMAGE="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/08/GeForce-Now-Comment.jpg"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
-ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/play.geforcenow.com/g" /home/playtron/.local/share/playtron/apps/local/"${FLATPAK_NAME}"/launcher.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "NVIDIA_GeForce_NOW" "com.google.Chrome" "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/08/GeForce-Now-Comment.jpg""
+ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/play.geforcenow.com/g" /home/playtron/.local/share/playtron/apps/local/NVIDIA_GeForce_NOW/launcher.sh
 ```
 
 Install Xbox Cloud Gaming.
 
 ```shell
-export FLATPAK_NAME="Xbox_Cloud_Gaming"
-export FLATPAK_PACKAGE="com.google.Chrome"
-export FLATPAK_IMAGE="https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
-ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" /home/playtron/.local/share/playtron/apps/local/"${FLATPAK_NAME}"/launcher.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Xbox_Cloud_Gaming" "com.google.Chrome" "https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg""
+ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" /home/playtron/.local/share/playtron/apps/local/Xbox_Cloud_Gaming/launcher.sh
 ```
 
 ### Install Minecraft
@@ -171,12 +142,7 @@ ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
 
 ```shell
-export FLATPAK_NAME="Minecraft"
-export FLATPAK_PACKAGE="org.prismlauncher.PrismLauncher"
-export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Minecraft" "org.prismlauncher.PrismLauncher" "https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg""
 ```
 
 ### Install Alternative Game Launchers
@@ -186,12 +152,7 @@ Instead of having Playtron GameOS manage all games, an alternative game launcher
 Install [Lutris](https://lutris.net/).
 
 ```shell
-export FLATPAK_NAME="Lutris"
-export FLATPAK_PACKAGE="net.lutris.Lutris"
-export FLATPAK_IMAGE="https://cdn2.steamgriddb.com/logo_thumb/2f51fec74d2549dad27f0dc57c5c8ddc.png"
-scp plugin-local/install-flatpak.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}"
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Lutris" "net.lutris.Lutris" "https://cdn2.steamgriddb.com/logo_thumb/2f51fec74d2549dad27f0dc57c5c8ddc.png""
 ```
 
 ### Install a Desktop Environment
@@ -200,6 +161,13 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 > The Software Update feature in GameOS will no longer work with the full desktop environment installed. All future operating system updates will need to be handled via the Containerfile instead.
 
 By default, Playtron GameOS only provides a basic Weston desktop environment. Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
+
+Navigate back to the `gameos-unlock` directory and download the latest updates.
+
+```shell
+cd gameos-unlock
+git pull --rebase origin main
+```
 
 Copy the example files to start from.
 
@@ -230,8 +198,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-desktop-mode.sh
 A reboot is required to load the changes.
 
 ```shell
-ssh playtron@$GAMEOS_IP_ADDRESS sync
-ssh playtron@$GAMEOS_IP_ADDRESS sudo reboot
+ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
 ```
 
 A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
@@ -241,8 +208,7 @@ A new "Desktop Mode" application will appear in Playtron GameOS to switch into t
 Remove all modifications made by GameOS Unlock and go back to a stock Playtron GameOS experience.
 
 ```shell
-scp gameos-unlock-uninstall.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/gameos-unlock-uninstall.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/gameos-unlock-uninstall.sh | bash -s --"
 ```
 
 ## License

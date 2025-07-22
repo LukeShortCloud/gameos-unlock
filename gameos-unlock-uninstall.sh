@@ -19,9 +19,6 @@ sudo rm -f /etc/sddm.conf.d/60-playtron-session-override.conf
 # Switch to the upstream image in case local modifications were used.
 sudo bootc switch ghcr.io/playtron-os/playtron-os:latest
 
-# Delete the uninstall script before rebooting.
-rm -f /home/playtron/gameos-unlock-uninstall.sh
-
 # Use a single command to delete the sudoers file and reboot.
 # Otherwise, the reboot may not work.
 sudo sh -c 'rm -f /etc/sudoers.d/playtron; reboot'
