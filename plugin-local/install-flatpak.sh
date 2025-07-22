@@ -18,7 +18,8 @@ chmod +x ~/.local/share/playtron/apps/local/"${1}"/launcher.sh
 
 echo "name: ${1}
 executable: ./launcher.sh
-os: linux" > ~/.local/share/playtron/apps/local/"${1}"/gameinfo.yaml
+os: linux
+runtime: false" > ~/.local/share/playtron/apps/local/"${1}"/gameinfo.yaml
 if [ -n "${3}" ]; then
     echo "image: ${3}" >> ~/.local/share/playtron/apps/local/"${1}"/gameinfo.yaml
 fi

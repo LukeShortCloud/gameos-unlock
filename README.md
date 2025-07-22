@@ -5,21 +5,20 @@ Table of Contents:
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
 - [Scripts](#scripts)
-    - [Enable Sideloading Support](#enable-sideloading-support)
-        - [Install Any Flatpak](#install-any-flatpak)
-        - [Install Web Browsers](#install-web-browsers)
-        - [Install Game Streaming Services](#install-game-streaming-services)
-        - [Install Minecraft](#install-minecraft)
-        - [Install Alternative Game Launchers](#install-alternative-game-launchers)
-        - [Install a Desktop Environment](#install-a-desktop-environment)
-    - [Uninstall](#uninstall)
+    - [Install Any Flatpak](#install-any-flatpak)
+    - [Install Web Browsers](#install-web-browsers)
+    - [Install Game Streaming Services](#install-game-streaming-services)
+    - [Install Minecraft](#install-minecraft)
+    - [Install Alternative Game Launchers](#install-alternative-game-launchers)
+    - [Install a Desktop Environment](#install-a-desktop-environment)
+- [Uninstall](#uninstall)
 - [License](#license)
 
 ## Introduction
 
 **Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!**
 
-This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section and then [enable sideloading support](#enable-sideloading-support).
+This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section.
 
 For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address, navigate back to the `gameos-unlock` directory, and download the latest updates.
 
@@ -33,7 +32,7 @@ git pull --rebase origin main
 
 ## Requirements
 
-- 1x PC with Playtron GameOS Beta 1 (0.21.0.21) through Beta 2.1 (0.21.2.4) only
+- 1x PC with Playtron GameOS 1.0 Release Candidate (1.0.0.24) or newer installed
 - 1x PC with Linux, macOS, or Windows installed to manage GameOS remotely
     - [Windows Subsystem for Linux (WSL) 2](https://learn.microsoft.com/en-us/windows/wsl/install) is recommended for Windows users
 
@@ -75,21 +74,11 @@ git pull --rebase origin main
     cd gameos-unlock
     ```
 
+Some applications and games installed by these scripts have no way to exit. Use the "GUIDE" button to go back to the Home screen. Then use the "Y" button to force close it.
+
 ## Scripts
 
-### Enable Sideloading Support
-
-The [local plugin](https://github.com/playtron-os/plugin-local) is installed but not enabled by default on GameOS Beta 1 (0.21.0.21). Copy and run these commands to enable it. This will take some time for the Playtron service to restart.
-
-```shell
-scp plugin-local/plugin-local-enable.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/plugin-local-enable.sh
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/plugin-local-enable.sh
-```
-
-Some applications and games have no way to exit. Use the "GUIDE" button to go back to the Home screen. Then use the "Y" button to force close it.
-
-#### Install Any Flatpak
+### Install Any Flatpak
 
 Any Flatpak can be installed by specifying a human-friendly name and the Flatpak package name. Optionally provide a URL to a 1080p image. Search on [Flathub](https://flathub.org/) to see what applications and games are available.
 
@@ -114,7 +103,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${F
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ```
 
-#### Install Web Browsers
+### Install Web Browsers
 
 On handhelds, after installation, use the Quick Access Menu (QAM) button to access the virtual keyboard.
 
@@ -140,7 +129,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${F
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ```
 
-#### Install Game Streaming Services
+### Install Game Streaming Services
 
 Install chiaki4deck for PlayStation Remote Play.
 
@@ -177,7 +166,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ssh -o SendEnv=FLATPAK_NAME playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" /home/playtron/.local/share/playtron/apps/local/"${FLATPAK_NAME}"/launcher.sh
 ```
 
-#### Install Minecraft
+### Install Minecraft
 
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
 
@@ -190,7 +179,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${F
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ```
 
-#### Install Alternative Game Launchers
+### Install Alternative Game Launchers
 
 Instead of having Playtron GameOS manage all games, an alternative game launcher can be used.
 
@@ -205,7 +194,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-flatpak.sh "${F
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-flatpak.sh
 ```
 
-#### Install a Desktop Environment
+### Install a Desktop Environment
 
 > [!WARNING]
 > The Software Update feature in GameOS will no longer work with the full desktop environment installed. All future operating system updates will need to be handled via the Containerfile instead.
@@ -247,7 +236,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS sudo reboot
 
 A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
 
-### Uninstall
+## Uninstall
 
 Remove all modifications made by GameOS Unlock and go back to a stock Playtron GameOS experience.
 
