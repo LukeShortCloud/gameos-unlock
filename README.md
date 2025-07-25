@@ -8,6 +8,7 @@ Table of Contents:
     - [Install Any Flatpak](#install-any-flatpak)
     - [Install Web Browsers](#install-web-browsers)
     - [Install Game Streaming Services](#install-game-streaming-services)
+    - [Install Emulators](#install-emulators)
     - [Install Minecraft](#install-minecraft)
     - [Install Alternative Game Launchers](#install-alternative-game-launchers)
     - [Install a Desktop Environment](#install-a-desktop-environment)
@@ -135,6 +136,14 @@ Install Xbox Cloud Gaming.
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Xbox_Cloud_Gaming" "com.google.Chrome" "https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg""
 ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" /home/playtron/.local/share/playtron/apps/local/Xbox_Cloud_Gaming/launcher.sh
+```
+
+### Install Emulators
+
+Install [RetroArch which provides many emulators](https://en.wikipedia.org/wiki/RetroArch#Supported_systems):
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroArch" "org.libretro.RetroArch" "https://gbatemp.net/attachments/1804196-1684057088-png.437393/""
 ```
 
 ### Install Minecraft
