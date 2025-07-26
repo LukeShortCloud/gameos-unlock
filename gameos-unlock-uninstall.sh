@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Remove local apps managed by GameOS Unlock.
-rm -r -f /home/playtron/.local/share/playtron/apps/local/{chiaki4deck,Chrome,desktop,Firefox,Minecraft,NVIDIA_GeForce_NOW,Xbox_Cloud_Gaming}/
+rm -r -f /home/playtron/.local/share/playtron/apps/local/{chiaki4deck,Chrome,desktop,Firefox,Minecraft,NVIDIA_GeForce_NOW,RetroDeck,Xbox_Cloud_Gaming}/
 sudo flatpak uninstall -y --noninteractive \
   io.github.streetpea.Chiaki4deck \
   com.google.Chrome \
   org.mozilla.firefox \
   net.lutris.Lutris \
-  org.prismlauncher.PrismLauncher
+  org.prismlauncher.PrismLauncher \
+  net.retrodeck.retrodeck
 # Remove unused dependencies.
 sudo flatpak uninstall --unused -y --noninteractive
 # Re-add the Fedora remote repository for Flatpak.

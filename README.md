@@ -146,6 +146,12 @@ Install [RetroArch which provides many emulators](https://en.wikipedia.org/wiki/
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroArch" "org.libretro.RetroArch" "https://gbatemp.net/attachments/1804196-1684057088-png.437393/""
 ```
 
+Install [RetroDeck which provides many emulators and managers](https://retrodeck.readthedocs.io/en/latest/wiki_about/what-is-included/) including emulators that RetroArch does not have and RetroArch itself. This is a large download and may take a long time to install:
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroDeck" "net.retrodeck.retrodeck" "https://retrodeck.net/assets/screens/screen01.png""
+```
+
 ### Install Minecraft
 
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
