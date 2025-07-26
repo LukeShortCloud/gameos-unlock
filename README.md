@@ -4,7 +4,6 @@ Table of Contents:
 - [Introduction](#introduction)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
-- [Scripts](#scripts)
     - [Install Any Flatpak](#install-any-flatpak)
     - [Install Web Browsers](#install-web-browsers)
     - [Install Game Streaming Services](#install-game-streaming-services)
@@ -74,8 +73,6 @@ export GAMEOS_IP_ADDRESS=192.168.1.123
     ```
 
 Some applications and games installed by these scripts have no way to exit. Use the "GUIDE" button to go back to the Home screen. Then use the "Y" button to force close it.
-
-## Scripts
 
 ### Install Any Flatpak
 
