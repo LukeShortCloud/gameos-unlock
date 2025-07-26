@@ -94,7 +94,7 @@ export FLATPAK_IMAGE="https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0c
 Then run this command to install it.
 
 ```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "${FLATPAK_NAME}" "${FLATPAK_PACKAGE}" "${FLATPAK_IMAGE}""
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"${FLATPAK_NAME}\" ${FLATPAK_PACKAGE} ${FLATPAK_IMAGE}"
 ```
 
 ### Install Web Browsers
@@ -124,15 +124,15 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 Install NVIDIA GeForce NOW.
 
 ```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "NVIDIA_GeForce_NOW" "com.google.Chrome" "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/08/GeForce-Now-Comment.jpg""
-ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/play.geforcenow.com/g" /home/playtron/.local/share/playtron/apps/local/NVIDIA_GeForce_NOW/launcher.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"NVIDIA GeForce NOW\" com.google.Chrome https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/08/GeForce-Now-Comment.jpg"
+-ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/play.geforcenow.com/g" \"/home/playtron/.local/share/playtron/apps/local/NVIDIA_GeForce_NOW/launcher.sh\"
 ```
 
 Install Xbox Cloud Gaming.
 
 ```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Xbox_Cloud_Gaming" "com.google.Chrome" "https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg""
-ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" /home/playtron/.local/share/playtron/apps/local/Xbox_Cloud_Gaming/launcher.sh
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"Xbox Cloud Gaming\" com.google.Chrome https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg"
+ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" \"/home/playtron/.local/share/playtron/apps/local/Xbox Cloud Gaming/launcher.sh\"
 ```
 
 ### Install Emulators
