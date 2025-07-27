@@ -138,10 +138,16 @@ ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome
 
 ### Install Minecraft
 
-Install and configure [Prism Launcher](https://prismlauncher.org/) to be able to play vanilla or modded [Minecraft](https://www.minecraft.net).
+Install [Prism Launcher](https://prismlauncher.org/) to be able to play vanilla or modded [Minecraft](https://www.minecraft.net).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Minecraft" "org.prismlauncher.PrismLauncher" "https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg""
+```
+
+Install the [Luanti (previously Minetest)](https://www.luanti.org/) game engine. It can be used to play games such as [VoxeLibre (previously MineClone2](https://content.luanti.org/packages/wuzzy/mineclone2/).
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Luanti" "org.luanti.luanti" "https://docs.luanti.org/images/server/Minetest_serverlist.png""
 ```
 
 ### Install a Desktop Environment
