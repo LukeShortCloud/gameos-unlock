@@ -7,10 +7,11 @@ Table of Contents:
     - [Install Any Flatpak](#install-any-flatpak)
     - [Install Web Browsers](#install-web-browsers)
     - [Install Game Streaming Services](#install-game-streaming-services)
-    - [Install Emulators](#install-emulators)
     - [Install Minecraft](#install-minecraft)
-    - [Install Alternative Game Launchers](#install-alternative-game-launchers)
     - [Install a Desktop Environment](#install-a-desktop-environment)
+    - [Install LocalSend](#install-localsend)
+        - [Install Emulators](#install-emulators)
+        - [Install Alternative Game Launchers](#install-alternative-game-launchers)
 - [Uninstall](#uninstall)
 - [License](#license)
 
@@ -135,42 +136,12 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --kiosk\ --app=https:\\\/\\\/www.xbox.com\\\/en-us\\\/play/g" \"/home/playtron/.local/share/playtron/apps/local/Xbox Cloud Gaming/launcher.sh\"
 ```
 
-### Install Emulators
-
-Install [RetroArch which provides many emulators](https://en.wikipedia.org/wiki/RetroArch#Supported_systems):
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroArch" "org.libretro.RetroArch" "https://gbatemp.net/attachments/1804196-1684057088-png.437393/""
-```
-
-Install [RetroDeck which provides many emulators and managers](https://retrodeck.readthedocs.io/en/latest/wiki_about/what-is-included/) including emulators that RetroArch does not have and RetroArch itself. This is a large download and may take a long time to install:
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroDeck" "net.retrodeck.retrodeck" "https://retrodeck.net/assets/screens/screen01.png""
-```
-
 ### Install Minecraft
 
 Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Minecraft" "org.prismlauncher.PrismLauncher" "https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg""
-```
-
-### Install Alternative Game Launchers
-
-Instead of having Playtron GameOS manage all games, an alternative game launcher can be used.
-
-Install [Heroic Games Launcher](https://heroicgameslauncher.com/).
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"Heroic Games Launcher\" "com.heroicgameslauncher.hgl" "https://cdn2.steamgriddb.com/grid/726d04d0731a3930f3359dca8f721168.png""
-```
-
-Install [Lutris](https://lutris.net/).
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Lutris" "net.lutris.Lutris" "https://cdn2.steamgriddb.com/logo_thumb/2f51fec74d2549dad27f0dc57c5c8ddc.png""
 ```
 
 ### Install a Desktop Environment
@@ -220,6 +191,45 @@ ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
 ```
 
 A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
+
+### Install LocalSend
+
+Install [LocalSend](https://localsend.org/) to send and receive files. This is useful for copying screenshots off the device from `/var/home/playtron/.local/share/playtron/screenshots/`, copying emulators files to the device, copying apps or games to the device, etc.
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "LocalSend" "org.localsend.localsend_app" "https://repository-images.githubusercontent.com/578822531/6c3c4f46-0ab9-4737-9afe-7fa7f2f929d7""
+ssh playtron@$GAMEOS_IP_ADDRESS sudo flatpak override --socket=system-bus --filesystem=home org.localsend.localsend_app
+```
+
+#### Install Emulators
+
+Install [RetroArch which provides many emulators](https://en.wikipedia.org/wiki/RetroArch#Supported_systems):
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroArch" "org.libretro.RetroArch" "https://gbatemp.net/attachments/1804196-1684057088-png.437393/""
+```
+
+Install [RetroDeck which provides many emulators and managers](https://retrodeck.readthedocs.io/en/latest/wiki_about/what-is-included/) including emulators that RetroArch does not have and RetroArch itself. This is a large download and may take a long time to install:
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroDeck" "net.retrodeck.retrodeck" "https://retrodeck.net/assets/screens/screen01.png""
+```
+
+#### Install Alternative Game Launchers
+
+Instead of having Playtron GameOS manage all games, an alternative game launcher can be used.
+
+Install [Heroic Games Launcher](https://heroicgameslauncher.com/).
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"Heroic Games Launcher\" "com.heroicgameslauncher.hgl" "https://cdn2.steamgriddb.com/grid/726d04d0731a3930f3359dca8f721168.png""
+```
+
+Install [Lutris](https://lutris.net/).
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Lutris" "net.lutris.Lutris" "https://cdn2.steamgriddb.com/logo_thumb/2f51fec74d2549dad27f0dc57c5c8ddc.png""
+```
 
 ## Uninstall
 
