@@ -102,13 +102,13 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 
 On handhelds, after installation, use the Quick Access Menu (QAM) button to access the virtual keyboard.
 
-Install Google Chrome.
+Install [Google Chrome](https://www.google.com/chrome/).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Chrome" "com.google.Chrome" "https://wallpapersok.com/images/high/seamless-google-chrome-art-ascghdz14kzmk87u.webp""
 ```
 
-Install Mozilla Firefox.
+Install [Mozilla Firefox](https://www.firefox.com/).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Firefox" "org.mozilla.firefox" "https://img.goodfon.com/original/1920x1080/0/83/mozilla-firefox-brauzer-5087.jpg""
@@ -116,20 +116,20 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 
 ### Install Game Streaming Services
 
-Install chiaki4deck for PlayStation Remote Play.
+Install [chiaki4deck](https://github.com/DieHertz/chiaki4deck) for [PlayStation (PS) Remote Play](https://www.playstation.com/en-us/remote-play/).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "chiaki4deck" "io.github.streetpea.Chiaki4deck" "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/01/remote-play.jpeg""
 ```
 
-Install NVIDIA GeForce NOW.
+Install [NVIDIA GeForce NOW](https://www.nvidia.com/en-us/geforce-now/).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"NVIDIA GeForce NOW\" com.google.Chrome https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/08/GeForce-Now-Comment.jpg"
 ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome\ --kiosk\ --app=https:\\\/\\\/play.geforcenow.com/g" \"/home/playtron/.local/share/playtron/apps/local/NVIDIA GeForce NOW/launcher.sh\"
 ```
 
-Install Xbox Cloud Gaming.
+Install [Xbox Cloud Gaming](https://www.xbox.com/en-US/cloud-gaming).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"Xbox Cloud Gaming\" com.google.Chrome https://ixbt.online/gametech/covers/2021/06/28/4tismLfc71Vrqp9TaTkj7QA2AKZla4emBgGDLwtE.jpg"
@@ -138,7 +138,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS sed -i -- "s/com.google.Chrome/com.google.Chrome
 
 ### Install Minecraft
 
-Install and configure Prism Launcher via Flatpak to be able to play vanilla or modded Minecraft.
+Install and configure [Prism Launcher](https://prismlauncher.org/) to be able to play vanilla or modded [Minecraft](https://www.minecraft.net).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Minecraft" "org.prismlauncher.PrismLauncher" "https://wallpapers.com/images/hd/hd-minecraft-logo-3nehf0ctjgk3d0zp.jpg""
@@ -149,7 +149,7 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 > [!WARNING]
 > The Software Update feature in GameOS will no longer work with the full desktop environment installed. All future operating system updates will need to be handled via the Containerfile instead.
 
-By default, Playtron GameOS only provides a basic Weston desktop environment. Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
+By default, Playtron GameOS only provides a basic [Weston desktop environment](https://wayland.pages.freedesktop.org/weston/). Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
 
 Navigate back to the `gameos-unlock` directory and download the latest updates.
 
@@ -165,7 +165,7 @@ cp bootc/desktop/Containerfile.example bootc/desktop/Containerfile
 cp bootc/desktop/install-desktop-mode.sh.example bootc/desktop/install-desktop-mode.sh
 ```
 
-By default, KDE Plasma is configured. Run the following `sed` commands if you want GNOME instead.
+By default, [KDE Plasma](https://kde.org/plasma-desktop/) is configured. Run the following `sed` commands if you want [GNOME](https://www.gnome.org/) instead.
 
 ```shell
 sed -i 's/kde-desktop/gnome-desktop/g' bootc/desktop/Containerfile
@@ -203,13 +203,13 @@ ssh playtron@$GAMEOS_IP_ADDRESS sudo flatpak override --socket=system-bus --file
 
 #### Install Emulators
 
-Install [RetroArch which provides many emulators](https://en.wikipedia.org/wiki/RetroArch#Supported_systems):
+Install [RetroArch which provides many emulators](https://en.wikipedia.org/wiki/RetroArch#Supported_systems).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroArch" "org.libretro.RetroArch" "https://gbatemp.net/attachments/1804196-1684057088-png.437393/""
 ```
 
-Install [RetroDeck which provides many emulators and managers](https://retrodeck.readthedocs.io/en/latest/wiki_about/what-is-included/) including emulators that RetroArch does not have and RetroArch itself. This is a large download and may take a long time to install:
+Install [RetroDeck which provides many emulators and managers](https://retrodeck.readthedocs.io/en/latest/wiki_about/what-is-included/) including emulators that RetroArch does not have and RetroArch itself. This is a large download and may take a long time to install.
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "RetroDeck" "net.retrodeck.retrodeck" "https://retrodeck.net/assets/screens/screen01.png""
