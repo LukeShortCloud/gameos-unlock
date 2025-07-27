@@ -79,7 +79,7 @@ Some applications and games installed by these scripts have no way to exit. Use 
 
 Any Flatpak can be installed by specifying a human-friendly name and the Flatpak package name. Optionally provide a URL to a 1080p image. Search on [Flathub](https://flathub.org/) to see what applications and games are available.
 
-Define the required for the Flatpak values first.
+First define the required values for the Flatpak.
 
 ```shell
 export FLATPAK_NAME="Minecraft"
@@ -232,6 +232,16 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 ```
 
 ## Uninstall
+
+Remove a specific Flatpak. Define both the `FLATPAK_NAME` and `FLATPAK_PACKAGE` used to install it.
+
+```shell
+export FLATPAK_NAME="Minecraft"
+export FLATPAK_PACKAGE="org.prismlauncher.PrismLauncher"
+```
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/uninstall-flatpak.sh | bash -s -- \"${FLATPAK_NAME}\" ${FLATPAK_PACKAGE}"
+```
 
 Remove all modifications made by GameOS Unlock and go back to a stock Playtron GameOS experience.
 
