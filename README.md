@@ -164,7 +164,7 @@ Instead of having Playtron GameOS manage all games, an alternative game launcher
 Install [Heroic Games Launcher](https://heroicgameslauncher.com/).
 
 ```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Heroic" "com.heroicgameslauncher.hgl" "https://cdn2.steamgriddb.com/grid/726d04d0731a3930f3359dca8f721168.png""
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- \"Heroic Games Launcher\" "com.heroicgameslauncher.hgl" "https://cdn2.steamgriddb.com/grid/726d04d0731a3930f3359dca8f721168.png""
 ```
 
 Install [Lutris](https://lutris.net/).
