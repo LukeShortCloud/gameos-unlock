@@ -1,0 +1,6 @@
+FROM ghcr.io/playtron-os/playtron-os:latest
+RUN echo -e "blacklist nvidia\nblacklist nvidiafb\nblacklist nvidia_drm\nblacklist i2c_nvidia_gpu\noptions nouveau config=NvGspRm=1" > /usr/lib/modprobe.d/50-playtron.conf
+RUN rm -f /etc/modprobe.d/nvidia-modeset.conf /usr/lib/modprobe.d/nvidia.conf
+RUN KERNEL=$(echo /lib/modules/*/vmlinuz | cut -d'/' -f4) \
+  && dracut --reproducible -v --omit-drivers nvidia --add 'ostree' -f --no-hostonly --kver ${KERNEL} /lib/modules/${KERNEL}/initramfs.img
+RUN dnf5 clean all && rm -r -f /boot/.* /usr/etc /var/cache/* /var/log/akmods/* && bootc container lint

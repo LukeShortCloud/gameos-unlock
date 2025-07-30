@@ -8,10 +8,12 @@ Table of Contents:
     - [Install Web Browsers](#install-web-browsers)
     - [Install Game Streaming Services](#install-game-streaming-services)
     - [Install Minecraft](#install-minecraft)
-    - [Install a Desktop Environment](#install-a-desktop-environment)
     - [Install LocalSend](#install-localsend)
         - [Install Emulators](#install-emulators)
         - [Install Alternative Game Launchers](#install-alternative-game-launchers)
+    - [OS Modifications](#os-modifications)
+        - [Install a Desktop Environment](#install-a-desktop-environment)
+        - [Use the Mesa Drivers for NVIDIA](#use-the-mesa-drivers-for-nvidia)
 - [Uninstall](#uninstall)
 - [License](#license)
 
@@ -150,55 +152,6 @@ Install the [Luanti (previously Minetest)](https://www.luanti.org/) game engine.
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Luanti" "org.luanti.luanti" "https://docs.luanti.org/images/server/Minetest_serverlist.png""
 ```
 
-### Install a Desktop Environment
-
-> [!WARNING]
-> The Software Update feature in GameOS will no longer work with the full desktop environment installed. All future operating system updates will need to be handled via the Containerfile instead.
-
-By default, Playtron GameOS only provides a basic [Weston desktop environment](https://wayland.pages.freedesktop.org/weston/). Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
-
-Navigate back to the `gameos-unlock` directory and download the latest updates.
-
-```shell
-cd gameos-unlock
-git pull --rebase origin main
-```
-
-Copy the example files to start from.
-
-```shell
-cp bootc/desktop/Containerfile.example bootc/desktop/Containerfile
-cp bootc/desktop/install-desktop-mode.sh.example bootc/desktop/install-desktop-mode.sh
-```
-
-By default, [KDE Plasma](https://kde.org/plasma-desktop/) is configured. Run the following `sed` commands if you want [GNOME](https://www.gnome.org/) instead.
-
-```shell
-sed -i 's/kde-desktop/gnome-desktop/g' bootc/desktop/Containerfile
-sed -i 's/Session=plasma/Session=gnome-wayland/g' bootc/desktop/install-desktop-mode.sh
-sed -i 's/Icon=\/usr\/share\/plasma\/desktoptheme\/default\/icons\/mobile.svgz/Icon=\/usr\/share\/icons\/gnome\/32x32\/devices\/input-gaming.png/g' bootc/desktop/install-desktop-mode.sh
-```
-
-Install the desktop environment.
-
-```shell
-scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-export DESKTOP_TAG="$(date --iso-8601=seconds | sed 's/:/_/g')"
-ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --tag desktop:${DESKTOP_TAG} .
-ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/desktop:${DESKTOP_TAG}
-scp bootc/desktop/install-desktop-mode.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-desktop-mode.sh
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-desktop-mode.sh
-```
-
-A reboot is required to load the changes.
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
-```
-
-A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
-
 ### Install LocalSend
 
 Install [LocalSend](https://localsend.org/) to send and receive files. This is useful for copying screenshots off the device from `/var/home/playtron/.local/share/playtron/screenshots/`, copying emulators files to the device, copying apps or games to the device, etc.
@@ -236,6 +189,90 @@ Install [Lutris](https://lutris.net/).
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/plugin-local/install-flatpak.sh | bash -s -- "Lutris" "net.lutris.Lutris" "https://cdn2.steamgriddb.com/logo_thumb/2f51fec74d2549dad27f0dc57c5c8ddc.png""
+```
+
+### OS Modifications
+
+> [!WARNING]
+> The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
+
+#### Install a Desktop Environment
+
+By default, Playtron GameOS only provides a basic [Weston desktop environment](https://wayland.pages.freedesktop.org/weston/). Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
+
+Navigate back to the `gameos-unlock` directory and download the latest updates.
+
+```shell
+cd gameos-unlock
+git pull --rebase origin main
+```
+
+Copy the example files to start from.
+
+```shell
+cp bootc/desktop/Containerfile.example bootc/desktop/Containerfile
+cp bootc/desktop/install-desktop-mode.sh.example bootc/desktop/install-desktop-mode.sh
+```
+
+By default, [KDE Plasma](https://kde.org/plasma-desktop/) is configured. Run the following `sed` commands if you want [GNOME](https://www.gnome.org/) instead.
+
+```shell
+sed -i 's/kde-desktop/gnome-desktop/g' bootc/desktop/Containerfile
+sed -i 's/Session=plasma/Session=gnome-wayland/g' bootc/desktop/install-desktop-mode.sh
+sed -i 's/Icon=\/usr\/share\/plasma\/desktoptheme\/default\/icons\/mobile.svgz/Icon=\/usr\/share\/icons\/gnome\/32x32\/devices\/input-gaming.png/g' bootc/desktop/install-desktop-mode.sh
+```
+
+Install the desktop environment.
+
+```shell
+scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+export CONTAINER_TAG="$(date --iso-8601=seconds | sed 's/:/_/g')"
+ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --tag desktop:${CONTAINER_TAG} .
+ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/desktop:${COINTAINER_TAG}
+scp bootc/desktop/install-desktop-mode.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-desktop-mode.sh
+ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-desktop-mode.sh
+```
+
+A reboot is required to load the changes.
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
+```
+
+A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
+
+#### Use the Mesa Drivers for NVIDIA
+
+> [!WARNING]
+> This is highly experimental. [Performance of the NVK Vulkan driver in Mesa can be up to 4x slower](https://www.phoronix.com/review/mesa-252-nvk-nvidia). [DLSS is also not currently supported](https://gitlab.freedesktop.org/mesa/mesa/-/issues/12439).
+
+Navigate back to the `gameos-unlock` directory and download the latest updates.
+
+```shell
+cd gameos-unlock
+git pull --rebase origin main
+```
+
+Copy the example files to start from.
+
+```shell
+cp bootc/nvidia-mesa/Containerfile.example bootc/nvidia-mesa/Containerfile
+```
+
+Switch from the official NVIDIA driver to the open source Mesa drivers.
+
+```shell
+scp bootc/nvidia-mesa/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
+export CONTAINER_TAG="$(date --iso-8601=seconds | sed 's/:/_/g')"
+ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --tag nvidia-mesa:${CONTAINER_TAG} .
+ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/nvidia-mesa:${CONTAINER_TAG}
+```
+
+A reboot is required to load the changes.
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
 ```
 
 ## Uninstall
