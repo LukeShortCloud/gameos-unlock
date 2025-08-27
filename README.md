@@ -226,7 +226,7 @@ Install the desktop environment.
 
 ```shell
 scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-export CONTAINER_TAG="$(date --iso-8601=seconds | sed 's/:/_/g')"
+export CONTAINER_TAG="$(date +"%Y-%m-%dT%H_%M_%S%z")"
 ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --no-cache --pull=always --tag desktop:${CONTAINER_TAG} .
 ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/desktop:${CONTAINER_TAG}
 scp bootc/desktop/install-desktop-mode.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
@@ -264,7 +264,7 @@ Switch from the official NVIDIA driver to the open source Mesa drivers.
 
 ```shell
 scp bootc/nvidia-mesa/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-export CONTAINER_TAG="$(date --iso-8601=seconds | sed 's/:/_/g')"
+export CONTAINER_TAG="$(date +"%Y-%m-%dT%H_%M_%S%z")"
 ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --no-cache --pull=always --tag nvidia-mesa:${CONTAINER_TAG} .
 ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/nvidia-mesa:${CONTAINER_TAG}
 ```
