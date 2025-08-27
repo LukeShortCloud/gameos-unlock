@@ -3,4 +3,7 @@ RUN echo -e "blacklist nvidia\nblacklist nvidiafb\nblacklist nvidia_drm\nblackli
 RUN rm -f /etc/modprobe.d/nvidia-modeset.conf /usr/lib/modprobe.d/nvidia.conf
 RUN KERNEL=$(echo /lib/modules/*/vmlinuz | cut -d'/' -f4) \
   && dracut --reproducible -v --omit-drivers nvidia --add 'ostree' -f --no-hostonly --kver ${KERNEL} /lib/modules/${KERNEL}/initramfs.img
+# Disable forced OS updates.
+RUN echo "VERSION_ID_ORIGINAL=$(grep VERSION_ID /usr/lib/os-release-playtron | cut -d= -f2)" >> /usr/lib/os-release-playtron && \
+  sed -i -E "s/VERSION_ID=.+/VERSION_ID=1.999.999.999/g" /usr/lib/os-release-playtron
 RUN dnf5 clean all && rm -r -f /boot/.* /usr/etc /var/cache/* /var/log/akmods/* && bootc container lint
