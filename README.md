@@ -228,7 +228,7 @@ Install the desktop environment.
 scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
 export CONTAINER_TAG="$(date --iso-8601=seconds | sed 's/:/_/g')"
 ssh playtron@$GAMEOS_IP_ADDRESS sudo podman build --tag desktop:${CONTAINER_TAG} .
-ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/desktop:${COINTAINER_TAG}
+ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc switch --transport containers-storage localhost/desktop:${CONTAINER_TAG}
 scp bootc/desktop/install-desktop-mode.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
 ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-desktop-mode.sh
 ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-desktop-mode.sh
