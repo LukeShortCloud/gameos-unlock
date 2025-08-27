@@ -254,7 +254,7 @@ cd gameos-unlock
 git pull --rebase origin main
 ```
 
-Copy the example files to start from.
+Copy the example file to start from.
 
 ```shell
 cp bootc/nvidia-mesa/Containerfile.example bootc/nvidia-mesa/Containerfile
