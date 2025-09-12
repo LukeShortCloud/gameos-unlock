@@ -21,6 +21,11 @@ Table of Contents:
 
 **Unlock the full potential of [Playtron GameOS](https://github.com/playtron-os/gameos) with unofficial community scripts!**
 
+> [!WARNING]
+> **USE AT YOUR OWN RISK!** If you run into any major issues, it is possible to [uninstall](#uninstall) GameOS Unlock modifications.
+>
+> Playtron will not provide support for any issues encountered with these modifications! Please direct all feature requesets and bug reports to the [GitHub Issues page for GameOS Unlock](https://github.com/LukeShortCloud/gameos-unlock/issues).
+
 This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section.
 
 For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address.
@@ -28,8 +33,6 @@ For running commands again, always set the `GAMEOS_IP_ADDRESS` environment varia
 ```shell
 export GAMEOS_IP_ADDRESS=192.168.1.123
 ```
-
-**USE AT YOUR OWN RISK!** If you run into any major issues, it is possible to [uninstall](#uninstall) GameOS Unlock modifications.
 
 ## Requirements
 
@@ -193,10 +196,10 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 
 ### OS Modifications
 
+#### Install a Desktop Environment
+
 > [!WARNING]
 > The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
-
-#### Install a Desktop Environment
 
 By default, Playtron GameOS only provides a basic [Weston desktop environment](https://wayland.pages.freedesktop.org/weston/). Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
 
@@ -243,6 +246,9 @@ ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
 A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
 
 #### Use the Mesa Drivers for NVIDIA
+
+> [!WARNING]
+> The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
 
 > [!WARNING]
 > This is highly experimental. [Performance of the NVK Vulkan driver in Mesa can be up to 4x slower](https://www.phoronix.com/review/mesa-252-nvk-nvidia). [DLSS is also not currently supported](https://gitlab.freedesktop.org/mesa/mesa/-/issues/12439).
@@ -296,6 +302,8 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 If removing all modifications fails, use the emergency utilities menu to factory reset the device.
 
 -  Use a Xbox-style controller to hold down `LT`, `LB`, `RT`, `RB`, and `X` (or the equivalent) for 5 seconds.
+
+In a worst-case scenario, you may need to [reinstall Playtron GameOS](https://www.playtron.one/game-os#download-playtron-os).
 
 ## License
 
