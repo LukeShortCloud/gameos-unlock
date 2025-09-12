@@ -293,6 +293,10 @@ Remove all modifications made by GameOS Unlock and go back to a stock Playtron G
 ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/gameos-unlock-uninstall.sh | bash -s --"
 ```
 
+If removing all modifications fails, use the emergency utilities menu to factory reset the device.
+
+-  Use a Xbox-style controller to hold down `LT`, `LB`, `RT`, `RB`, and `X` (or the equivalent) for 5 seconds.
+
 ## License
 
 [Apache-2.0](LICENSE)
