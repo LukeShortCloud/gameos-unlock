@@ -222,7 +222,7 @@ sed -i 's/Session=plasma/Session=gnome-wayland/g' bootc/desktop/install-desktop-
 sed -i 's/Icon=\/usr\/share\/plasma\/desktoptheme\/default\/icons\/mobile.svgz/Icon=\/usr\/share\/icons\/gnome\/32x32\/devices\/input-gaming.png/g' bootc/desktop/install-desktop-mode.sh
 ```
 
-Install the desktop environment.
+Install the desktop environment. This will take a very long time to complete.
 
 ```shell
 scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
@@ -260,7 +260,7 @@ Copy the example file to start from.
 cp bootc/nvidia-mesa/Containerfile.example bootc/nvidia-mesa/Containerfile
 ```
 
-Switch from the official NVIDIA driver to the open source Mesa drivers.
+Switch from the official NVIDIA driver to the open source Mesa drivers. This will take a very long time to complete.
 
 ```shell
 scp bootc/nvidia-mesa/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
