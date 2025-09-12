@@ -26,7 +26,7 @@ Table of Contents:
 >
 > Playtron will not provide support for any issues encountered with these modifications! Please direct all feature requesets and bug reports to the [GitHub Issues page for GameOS Unlock](https://github.com/LukeShortCloud/gameos-unlock/issues).
 
-This guide must be followed in order. For example, to [install a desktop environment](#install-a-desktop-environment), you must first follow the [getting started](#getting-started) section.
+This guide must be followed in order. For example, to [install an alternative game launcher](#install-alternative-game-launchers), you must first follow the [getting started](#getting-started) section and then the [install LocalSend](#install-localsend) section second.
 
 For running commands again, always set the `GAMEOS_IP_ADDRESS` environment variable with your actual IP address.
 
