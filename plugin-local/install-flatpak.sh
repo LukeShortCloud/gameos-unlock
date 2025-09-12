@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Remove the `fedora` repository and only use `flathub` for
 # simplicity of having one repository, more packages, and more up-to-date packages.
 sudo flatpak remote-delete fedora

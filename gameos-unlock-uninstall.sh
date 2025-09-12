@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Remove local apps managed by GameOS Unlock.
 rm -r -f /home/playtron/.local/share/playtron/apps/local/{chiaki4deck,Chrome,desktop,Firefox,"Heroic Games Launcher",Heroic,Luanti,Lutris,Minecraft,"NVIDIA GeForce NOW",NVIDIA_GeForce_NOW,RetroArch,RetroDeck,"Xbox Cloud Gaming",Xbox_Cloud_Gaming}/
 sudo flatpak uninstall -y --noninteractive \
