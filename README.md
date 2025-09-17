@@ -196,6 +196,9 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 
 ### OS Modifications
 
+> [!WARNING]
+> The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
+
 #### Install a Desktop Environment
 
 > [!WARNING]
