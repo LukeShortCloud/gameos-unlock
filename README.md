@@ -39,6 +39,7 @@ export GAMEOS_IP_ADDRESS=192.168.1.123
 - 1x PC with Playtron GameOS 1.0 Stable Release (1.0.0.30) or newer installed
 - 1x PC with Linux, macOS, or Windows installed to manage GameOS remotely
     - [Windows Subsystem for Linux (WSL) 2](https://learn.microsoft.com/en-us/windows/wsl/install) is required for Windows users
+        - Open "WSL" (not "Command Prompt") to run commands
 
 ## Getting Started
 
