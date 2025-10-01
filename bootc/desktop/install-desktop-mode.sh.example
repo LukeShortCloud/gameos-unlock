@@ -30,6 +30,3 @@ Terminal=false
 Type=Application
 Categories=Application' > ~/Desktop/switch-to-game-mode.desktop
 chmod +x ~/Desktop/switch-to-game-mode.desktop
-# Add the shortcut here for GNOME.
-mkdir ~/.local/share/applications/ 2> /dev/null
-cp ~/Desktop/switch-to-game-mode.desktop ~/.local/share/applications/

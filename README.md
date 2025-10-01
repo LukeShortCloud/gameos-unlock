@@ -221,14 +221,6 @@ cp bootc/desktop/Containerfile.example bootc/desktop/Containerfile
 cp bootc/desktop/install-desktop-mode.sh.example bootc/desktop/install-desktop-mode.sh
 ```
 
-By default, [KDE Plasma](https://kde.org/plasma-desktop/) is configured. Run the following `sed` commands if you want [GNOME](https://www.gnome.org/) instead.
-
-```shell
-sed -i 's/kde-desktop/gnome-desktop/g' bootc/desktop/Containerfile
-sed -i 's/Session=plasma/Session=gnome-wayland/g' bootc/desktop/install-desktop-mode.sh
-sed -i 's/Icon=\/usr\/share\/plasma\/desktoptheme\/default\/icons\/mobile.svgz/Icon=\/usr\/share\/icons\/gnome\/32x32\/devices\/input-gaming.png/g' bootc/desktop/install-desktop-mode.sh
-```
-
 Install the desktop environment. This will take a very long time to complete.
 
 ```shell
