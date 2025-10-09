@@ -256,6 +256,12 @@ ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
 
 A new "Desktop Mode" application will appear in Playtron GameOS to switch into the desktop environment. Once in Desktop Mode, there is a "Game Mode" desktop shortcut to switch back.
 
+If you get stuck in Desktop Mode, you can go back to Game Mode manually by running this command:
+
+```shell
+ssh playtron@$GAMEOS_IP_ADDRESS /home/playtron/.local/share/playtron/apps/local/desktop/switch-to-game-mode.sh
+```
+
 #### Use the Mesa Drivers for NVIDIA
 
 > [!WARNING]
