@@ -37,13 +37,13 @@ export GAMEOS_IP_ADDRESS=192.168.1.123
 ## Requirements
 
 - 1x PC with Playtron GameOS 1.0 Stable Release (1.0.0.30) or newer installed
-- 1x PC with Linux, macOS, or Windows installed to manage GameOS remotely
+- 1x PC with Linux, macOS, or Windows installed to manage Playtron GameOS remotely
     - [Windows Subsystem for Linux (WSL) 2](https://learn.microsoft.com/en-us/windows/wsl/install) is required for Windows users
         - Open "WSL" (not "Command Prompt") to run commands
 
 ## Getting Started
 
-- Enable SSH access on GameOS.
+- Enable SSH access on Playtron GameOS.
     - Settings > Advanced > Remote Access: On
 - Find the IP address.
     - Settings > Internet > (select your Wi-Fi network) > (scroll down and look for "IP Address")
@@ -202,12 +202,12 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 ### OS Modifications
 
 > [!WARNING]
-> The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
+> The Software Update feature in Playtron GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
 
 #### Install a Desktop Environment
 
 > [!WARNING]
-> The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
+> The Software Update feature in Playtron GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
 
 By default, Playtron GameOS only provides a basic [Weston desktop environment](https://wayland.pages.freedesktop.org/weston/). Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
 
@@ -257,7 +257,7 @@ A new "Desktop Mode" application will appear in Playtron GameOS to switch into t
 #### Use the Mesa Drivers for NVIDIA
 
 > [!WARNING]
-> The Software Update feature in GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
+> The Software Update feature in Playtron GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
 
 > [!WARNING]
 > This is highly experimental. [Performance of the NVK Vulkan driver in Mesa can be up to 4x slower](https://www.phoronix.com/review/mesa-252-nvk-nvidia). [DLSS is also not currently supported](https://gitlab.freedesktop.org/mesa/mesa/-/issues/12439).
