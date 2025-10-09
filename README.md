@@ -233,6 +233,8 @@ sed -i 's/Session=plasma/Session=gnome-wayland/g' bootc/desktop/install-desktop-
 sed -i 's/Icon=\/usr\/share\/plasma\/desktoptheme\/default\/icons\/mobile.svgz/Icon=\/usr\/share\/icons\/gnome\/32x32\/devices\/input-gaming.png/g' bootc/desktop/install-desktop-mode.sh
 ```
 
+Plug the charger into the device to extend the timeout before sleep to 1 hour.
+
 Install the desktop environment. This will take a very long time to complete.
 
 ```shell
@@ -274,6 +276,8 @@ Copy the example file to start from.
 ```shell
 cp bootc/nvidia-mesa/Containerfile.example bootc/nvidia-mesa/Containerfile
 ```
+
+Plug the charger into the device to extend the timeout before sleep to 1 hour.
 
 Switch from the official NVIDIA driver to the open source Mesa drivers. This will take a very long time to complete.
 
