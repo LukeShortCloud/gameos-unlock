@@ -24,7 +24,7 @@ Table of Contents:
 > [!WARNING]
 > **USE AT YOUR OWN RISK!** If you run into any major issues, it is possible to [uninstall](#uninstall) GameOS Unlock modifications.
 >
-> Playtron will not provide support for any issues encountered with these modifications! Please direct all feature requesets and bug reports to the [GitHub Issues page for GameOS Unlock](https://github.com/LukeShortCloud/gameos-unlock/issues).
+> Playtron will not provide support for any issues encountered with these modifications! Please direct all feature requests and bug reports to the [GitHub Issues page for GameOS Unlock](https://github.com/LukeShortCloud/gameos-unlock/issues).
 
 This guide must be followed in order. For example, to [install an alternative game launcher](#install-alternative-game-launchers), you must first follow the [getting started](#getting-started) section and then the [install LocalSend](#install-localsend) section second.
 
