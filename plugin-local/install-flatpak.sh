@@ -7,6 +7,11 @@ set -x
 sudo flatpak remote-delete fedora
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# Update all existing Flatpaks first.
+sudo flatpak update -y --noninteractive
+sudo flatpak uninstall --unused -y --noninteractive
+
+# Install the new Flatpak.
 sudo flatpak install -y "${2}"
 
 # Enable controller support.
