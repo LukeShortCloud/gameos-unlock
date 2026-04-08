@@ -30,5 +30,3 @@ runtime: false" > ~/.local/share/playtron/apps/local/"${1}"/gameinfo.yaml
 if [ -n "${3}" ]; then
     echo "image: ${3}" >> ~/.local/share/playtron/apps/local/"${1}"/gameinfo.yaml
 fi
-
-systemctl --user restart playserve
