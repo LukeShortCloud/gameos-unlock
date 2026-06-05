@@ -12,8 +12,7 @@ Table of Contents:
         - [Install Emulators](#install-emulators)
         - [Install Alternative Game Launchers](#install-alternative-game-launchers)
     - [OS Modifications](#os-modifications)
-        - [Install a Desktop Environment](#install-a-desktop-environment)
-        - [Use the Mesa Drivers for NVIDIA](#use-the-mesa-drivers-for-nvidia)
+        - [Install the GameOS Unlock Image](#install-the-gameos-unlock-image)
 - [Uninstall](#uninstall)
 - [License](#license)
 
@@ -36,7 +35,7 @@ export GAMEOS_IP_ADDRESS=192.168.1.123
 
 ## Requirements
 
-- 1x PC with Playtron GameOS 1.3.0.12 or newer installed
+- 1x PC with Playtron GameOS 1.3.1.0 or newer installed
 - 1x PC with Linux, macOS, or Windows installed to manage Playtron GameOS remotely
     - [Windows Subsystem for Linux (WSL) 2](https://learn.microsoft.com/en-us/windows/wsl/install) is required for Windows users
         - Open "WSL" (not "Command Prompt") to run commands
@@ -201,51 +200,18 @@ ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShor
 
 ### OS Modifications
 
-> [!WARNING]
-> The Software Update feature in Playtron GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
+#### Install the GameOS Unlock Image
 
-#### Install a Desktop Environment
-
-> [!WARNING]
-> The Software Update feature in Playtron GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
-
-By default, Playtron GameOS only provides a basic [Weston desktop environment](https://wayland.pages.freedesktop.org/weston/). Examples are provided on how to install a fully featured desktop environment. This requires building a local container image. Additional customizations can be added first.
-
-Navigate back to the `gameos-unlock` directory and download the latest updates.
-
-```shell
-cd gameos-unlock
-git pull --rebase origin main
-```
-
-Copy the example files to start from.
-
-```shell
-cp bootc/desktop/Containerfile.example bootc/desktop/Containerfile
-cp bootc/desktop/install-desktop-mode.sh.example bootc/desktop/install-desktop-mode.sh
-```
-
-By default, [KDE Plasma](https://kde.org/plasma-desktop/) is configured. Run the following `sed` commands if you want [GNOME](https://www.gnome.org/) instead.
-
-```shell
-sed -i 's/kde-desktop/gnome-desktop/g' bootc/desktop/Containerfile
-sed -i 's/Session=plasma/Session=gnome-wayland/g' bootc/desktop/install-desktop-mode.sh
-sed -i 's/Icon=\/usr\/share\/plasma\/desktoptheme\/default\/icons\/mobile.svgz/Icon=\/usr\/share\/icons\/gnome\/32x32\/devices\/input-gaming.png/g' bootc/desktop/install-desktop-mode.sh
-```
+Features of the GameOS Unlock container:
+- [KDE Plasma](https://kde.org/plasma-desktop/) desktop environment
+    - Switch between Game Mode and Desktop Mode
+- Optional support for Mesa graphics drivers for NVIDIA
 
 Plug the charger into the device to extend the timeout before sleep to 1 hour.
 
-Install the desktop environment. This will take a very long time to complete.
-
 ```shell
-scp bootc/desktop/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-export CONTAINER_TAG="$(date +"%Y-%m-%dT%H_%M_%S%z" | sed 's/+/-/g')"
-ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc image copy-to-storage
-ssh playtron@$GAMEOS_IP_ADDRESS sudo LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" podman build --no-cache --pull=always --tag desktop:${CONTAINER_TAG} /home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS sudo LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bootc switch --transport containers-storage localhost/desktop:${CONTAINER_TAG}
-scp bootc/desktop/install-desktop-mode.sh playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS /bin/bash /home/playtron/install-desktop-mode.sh
-ssh playtron@$GAMEOS_IP_ADDRESS rm -f /home/playtron/install-desktop-mode.sh
+ssh playtron@$GAMEOS_IP_ADDRESS sudo LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bootc switch quay.io/lukeshortcloud/gameos-unlock:latest
+ssh playtron@$GAMEOS_IP_ADDRESS "curl https://raw.githubusercontent.com/LukeShortCloud/gameos-unlock/refs/heads/main/bootc/install-desktop-mode.sh | bash -s"
 ```
 
 A reboot is required to load the changes.
@@ -260,45 +226,6 @@ If you get stuck in Desktop Mode, you can go back to Game Mode manually by runni
 
 ```shell
 ssh playtron@$GAMEOS_IP_ADDRESS /home/playtron/.local/share/playtron/apps/local/desktop/switch-to-game-mode.sh
-```
-
-#### Use the Mesa Drivers for NVIDIA
-
-> [!WARNING]
-> The Software Update feature in Playtron GameOS will no longer work with any of these OS modifications installed. All future operating system updates will need to be handled via the Containerfile instead.
-
-> [!WARNING]
-> This is highly experimental. [Performance of the NVK Vulkan driver in Mesa can be up to 4x slower](https://www.phoronix.com/review/mesa-252-nvk-nvidia). [DLSS is also not currently supported](https://gitlab.freedesktop.org/mesa/mesa/-/issues/12439).
-
-Navigate back to the `gameos-unlock` directory and download the latest updates.
-
-```shell
-cd gameos-unlock
-git pull --rebase origin main
-```
-
-Copy the example file to start from.
-
-```shell
-cp bootc/nvidia-mesa/Containerfile.example bootc/nvidia-mesa/Containerfile
-```
-
-Plug the charger into the device to extend the timeout before sleep to 1 hour.
-
-Switch from the official NVIDIA driver to the open source Mesa drivers. This will take a very long time to complete.
-
-```shell
-scp bootc/nvidia-mesa/Containerfile playtron@$GAMEOS_IP_ADDRESS:/home/playtron/
-export CONTAINER_TAG="$(date +"%Y-%m-%dT%H_%M_%S%z" | sed 's/+/-/g')"
-ssh playtron@$GAMEOS_IP_ADDRESS sudo bootc image copy-to-storage
-ssh playtron@$GAMEOS_IP_ADDRESS sudo LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" podman build --no-cache --pull=always --tag nvidia-mesa:${CONTAINER_TAG} /home/playtron/
-ssh playtron@$GAMEOS_IP_ADDRESS sudo LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bootc switch --transport containers-storage localhost/nvidia-mesa:${CONTAINER_TAG}
-```
-
-A reboot is required to load the changes.
-
-```shell
-ssh playtron@$GAMEOS_IP_ADDRESS "sync && sudo reboot"
 ```
 
 ## Uninstall

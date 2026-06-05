@@ -20,6 +20,7 @@ image: https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg
 os: linux
 runtime: false' > ~/.local/share/playtron/apps/local/desktop/gameinfo.yaml
 
+# Add the shortcut here for KDE Plasma.
 echo '[Desktop Entry]
 Exec=/bin/bash /home/playtron/.local/share/playtron/apps/local/desktop/switch-to-game-mode.sh
 Name=Game Mode
